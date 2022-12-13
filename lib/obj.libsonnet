@@ -48,4 +48,8 @@ getTraverse(obj, arr) ::
 // Flattens an array (`arr`) of object and returns it as an object: `[{x: 0}, {y: 1}]` => `{x: 0, y: 1}`
 flattenObjArray(arr) ::
   std.foldl(function(prev,this) prev+this, arr, {}),
+
+// add all top level fields of the object `obj` together
+addFields(obj) ::
+  self.flattenObjArray([obj[field] for field in std.objectFieldsAll(obj)])
 }
