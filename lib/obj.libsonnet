@@ -38,7 +38,7 @@ ignore(obj, field) :: self.remove(obj, field),
 pop(obj, field) :: self.remove(obj, field),
 
 // Return a copy of object `obj` where all top level fields are converted to hidden fields
-hideAll(obj) ::
+hideFields(obj) ::
   self.forEach(function(field, value) { [field]:: value }, obj),
 
 // Expands object `obj` with array `array`
