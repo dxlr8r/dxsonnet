@@ -41,6 +41,10 @@ pop(obj, field) :: self.remove(obj, field),
 hideFields(obj) ::
   self.forEach(function(field, value) { [field]:: value }, obj),
 
+// Return a copy of object `obj` where all top level fields are converted to visible fields
+showFields(obj) ::
+  self.forEach(function(field, value) { [field]::: value }, obj),
+
 // Expands object `obj` with array `array`
 getTraverse(obj, arr) :: 
   std.foldl(function(prev, this) std.get(prev, this, {}), arr, obj),
