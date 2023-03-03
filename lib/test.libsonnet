@@ -13,5 +13,8 @@
   laden(value) :: self.hasContent(value),
 
   // Negated alias for hasContent
-  empty(value) :: ! self.hasContent(value)
+  empty(value) :: ! self.hasContent(value),
+
+  // Ternary conditional operator
+  ternary(cond, value_if_true, value_if_false) :: if cond then value_if_true else value_if_false
 }
