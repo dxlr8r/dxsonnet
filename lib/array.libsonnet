@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2022-2023 Simen Strange <https://github.com/dxlr8r/argus>
+// SPDX-License-Identifier: MIT
 {
   // Returns a new array that consists of `el` split/divided into nth
   splitInto(el, nth, _result=[])::

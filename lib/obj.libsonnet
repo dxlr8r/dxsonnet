@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2022-2023 Simen Strange <https://github.com/dxlr8r/argus>
+// SPDX-License-Identifier: MIT
 {
 // Apply the given function to each field:value pair of the object to form a new object
 map(func, obj, _mfunc=function(o,f)std.get(o,f,{}), _field=[], _result={}) ::

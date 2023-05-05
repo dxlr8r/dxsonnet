@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: 2022-2023 Simen Strange <https://github.com/dxlr8r/argus>
+// SPDX-License-Identifier: MIT
 {
   // Check if value has content as a boolean
   hasContent(value) ::
@@ -11,6 +13,7 @@
   // Aliases for hasContent
   nonempty(value) :: self.hasContent(value),
   laden(value) :: self.hasContent(value),
+  loaded(value) :: self.hasContent(value),
 
   // Negated alias for hasContent
   empty(value) :: ! self.hasContent(value),
