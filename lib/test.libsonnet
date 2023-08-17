@@ -19,7 +19,8 @@
   empty(value) :: ! self.hasContent(value),
 
   // check if obj has field, TODO: also work on arrays
-  get(o, f) :: if self.hasContent(std.get(o, f)) then true else false,
+  exists(o, f) :: if self.hasContent(std.get(o, f)) then true else false,
+  get(o, f) :: self.exists(o ,f),
 
   // Ternary conditional operator
   ternary(cond, value_if_true, value_if_false) :: if cond then value_if_true else value_if_false
