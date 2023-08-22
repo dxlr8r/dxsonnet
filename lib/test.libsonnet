@@ -30,7 +30,7 @@
         {}
       else
         value_if_false;
-    if self.hasContent(std.get(o, f)) then true_value else false_value,
+    if std.objectHas(o, f) then true_value else false_value,
   get(o, f, value_if_true=true, value_if_false=false) ::
     self.exists(o, f, value_if_true, value_if_false),
 
