@@ -3,8 +3,10 @@
 {
 // Apply the given function to each field:value pair of the object to form a new object
 map(func, obj, _mfunc=function(o,f)std.get(o,f,{}), _field=[], _result={}) ::
-  if std.length(_field) == 0 && std.length(std.objectFieldsAll(_result)) == 0 then
-    self.map(func, obj, _mfunc, std.objectFieldsAll(obj))
+  if std.length(_field) == 0 &&
+  std.length(std.objectFieldsAll(_result)) == 0 then
+    if std.length(std.objectFieldsAll(obj)) == 0 then {}
+    else self.map(func, obj, _mfunc, std.objectFieldsAll(obj))
   else
     if std.length(_field) > 0 then
       self.map(func, obj, _mfunc, _field[1:std.length(_field)],
