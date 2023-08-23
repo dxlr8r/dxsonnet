@@ -8,5 +8,4 @@ local test = import 'test.libsonnet';
   obj: obj,
   string: string,
   test: test,
-  dxsonnet: array + obj + string + test
-}
+} + array + obj + string + test
