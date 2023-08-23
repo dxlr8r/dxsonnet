@@ -18,21 +18,41 @@
   // Negated alias for hasContent
   empty(value) :: ! self.hasContent(value),
 
-  // check if obj has field, TODO: also work on arrays
-  exists(o, f, value_if_true=true, value_if_false=false) ::
-    local true_value =
-      if std.isObject(value_if_false) && ! std.isObject(value_if_true) then
+  // check if haystack has needle, haystack can be an object or an array
+  exists(haystack, needle, value_if_true=null, value_if_false=null) ::
+    local false_value = 
+      if std.isObject(value_if_true) && 
+         std.type(value_if_false) == 'null' then
         {}
-      else
-        value_if_true;
-    local false_value =
-      if std.isObject(value_if_true) && ! std.isObject(value_if_false) then
-        {}
+      else if std.isArray(value_if_true) && 
+              std.type(value_if_false) == 'null' then
+        []
+      else if std.type(value_if_true)  == 'null' && 
+              std.type(value_if_false) == 'null' then
+        false
       else
         value_if_false;
-    if std.objectHas(o, f) then true_value else false_value,
-  get(o, f, value_if_true=true, value_if_false=false) ::
-    self.exists(o, f, value_if_true, value_if_false),
+    local true_value = 
+      if std.isObject(value_if_false) && 
+         std.type(value_if_true) == 'null' then
+        {}
+      else if std.isArray(value_if_false) && 
+              std.type(value_if_true) == 'null' then
+        []
+      else if std.type(value_if_false) == 'null' && 
+              std.type(value_if_true)  == 'null' then
+        true
+      else
+        value_if_true;
+    if std.isObject(haystack) && std.objectHas(haystack, needle) then
+      true_value
+    else if std.isArray(haystack) && std.member(haystack, needle) then
+      true_value
+    else 
+      false_value,
+
+  get(haystack, needle, value_if_true=null, value_if_false=null) ::
+    self.exists(haystack, needle, value_if_true, value_if_false),
 
   // Ternary conditional operator
   ternary(cond, value_if_true, value_if_false) ::

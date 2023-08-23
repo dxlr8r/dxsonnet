@@ -8,4 +8,9 @@
     if std.type(el) == 'string'
     then self.splitInto(std.stringChars(el), nth)
     else self.splitInto(el[nth:std.length(el)], nth, _result+[el[0:nth]]),
+
+  lastEl(arr)::
+    if std.length(arr) > 0 then arr[std.length(arr)-1],
+  firstEl(arr)::
+    if std.length(arr) > 0 then arr[0],
 }
